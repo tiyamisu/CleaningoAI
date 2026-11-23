@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- CleaningoAI Geometric Emblem -->
+  <g id="emblem">
+    <!-- Outer C arc with topographic contours -->
+    <path d="M36 10 C18 10, 6 24, 6 40 C6 56, 18 70, 36 70" stroke="#1a3a2e" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Inner topographic contour lines -->
+    <path d="M32 18 C20 20, 14 29, 14 40 C14 51, 20 60, 32 62" stroke="#4a7c59" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M28 26 C21 28, 18 33.5, 18 40 C18 46.5, 21 52, 28 54" stroke="#2d6a6a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <!-- Water/drainage flow line -->
+    <path d="M38 55 C44 55, 48 52, 52 48" stroke="#2d6a6a" stroke-width="2" stroke-dasharray="4 2" stroke-linecap="round" opacity="0.6"/>
+    <!-- Geospatial node dot -->
+    <circle cx="38" cy="40" r="4" fill="#1a3a2e"/>
+    <circle cx="38" cy="40" r="7" fill="none" stroke="#4a7c59" stroke-width="1.5" opacity="0.5"/>
+    <!-- Map pin indicator -->
+    <circle cx="52" cy="40" r="3" fill="#2d6a6a" opacity="0.7"/>
+  </g>
+
+  <!-- Vertical divider -->
+  <line x1="68" y1="16" x2="68" y2="64" stroke="#1a3a2e" stroke-width="1" opacity="0.25"/>
+
+  <!-- CLEANINGO wordmark -->
+  <text x="78" y="46" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#1a3a2e" letter-spacing="-0.5">CLEANINGO</text>
+  <!-- AI in accent color -->
+  <text x="258" y="46" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#4a7c59" letter-spacing="-0.5">AI</text>
+
+  <!-- Tagline -->
+  <text x="78" y="62" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="8" font-weight="400" fill="#2d6a6a" letter-spacing="2.5" opacity="0.75">URBAN ENVIRONMENTAL INTELLIGENCE</text>
+</svg>
+

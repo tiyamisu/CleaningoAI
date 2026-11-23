@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- CleaningoAI Standalone Emblem -->
+  <circle cx="32" cy="32" r="31" fill="#1a3a2e"/>
+  <!-- C arc -->
+  <path d="M38 12 C22 12, 12 21, 12 32 C12 43, 22 52, 38 52" stroke="#f5f0e8" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <!-- Topographic contours -->
+  <path d="M34 19 C24 21, 19 26.5, 19 32 C19 37.5, 24 43, 34 45" stroke="#6b8f71" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M30 26 C25 27.5, 23 29.5, 23 32 C23 34.5, 25 36.5, 30 38" stroke="#2d6a6a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <!-- Geospatial node -->
+  <circle cx="34" cy="32" r="3.5" fill="#f5f0e8"/>
+  <circle cx="34" cy="32" r="6" fill="none" stroke="#6b8f71" stroke-width="1.5" opacity="0.6"/>
+  <!-- Drainage flow -->
+  <path d="M36 44 C41 44, 45 41, 48 37" stroke="#2d6a6a" stroke-width="2" stroke-dasharray="3.5 2" stroke-linecap="round" opacity="0.7"/>
+  <!-- AI text in corner -->
+  <text x="42" y="20" font-family="'Inter', sans-serif" font-size="10" font-weight="800" fill="#4a7c59">AI</text>
+</svg>
+

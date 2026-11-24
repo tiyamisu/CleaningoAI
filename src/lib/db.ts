@@ -150,6 +150,98 @@ function initializeSchema() {
     CREATE INDEX IF NOT EXISTS idx_incidents_status ON incidents(status);
     CREATE INDEX IF NOT EXISTS idx_timeline_incident ON incident_timeline(incident_id);
     CREATE INDEX IF NOT EXISTS idx_audit_entity ON audit_events(entity_type, entity_id);
+
+    -- V2.0 Non-destructive extensions -------------------------------------------
+
+    CREATE TABLE IF NOT EXISTS materials (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      cas_number TEXT,
+      category TEXT,
+      density_kg_m3 REAL,
+      recyclability TEXT DEFAULT 'unknown',
+      hazard_level TEXT DEFAULT 'low',
+      properties_json TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS facilities (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      type TEXT,
+      address TEXT,
+      country TEXT DEFAULT 'India',
+      region TEXT,
+      latitude REAL,
+      longitude REAL,
+      sector TEXT,
+      capacity_tonnes_day REAL,
+      status TEXT DEFAULT 'active',
+      notes TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS chemical_substances (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      formula TEXT,
+      cas_number TEXT,
+      hazard_class TEXT,
+      molecular_weight_g_mol REAL,
+      boiling_point_c REAL,
+      melting_point_c REAL,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS sensors (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      type TEXT,
+      location_id TEXT,
+      latitude REAL,
+      longitude REAL,
+      status TEXT DEFAULT 'offline',
+      last_reading_at TEXT,
+      unit TEXT,
+      threshold_min REAL,
+      threshold_max REAL,
+      metadata_json TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS samples (
+      id TEXT PRIMARY KEY,
+      observation_id TEXT REFERENCES observations(id),
+      collected_at TEXT,
+      matrix_type TEXT,
+      collector_name TEXT,
+      lab_name TEXT,
+      lab_results_json TEXT,
+      status TEXT DEFAULT 'pending',
+      notes TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS interventions (
+      id TEXT PRIMARY KEY,
+      observation_id TEXT REFERENCES observations(id),
+      incident_id TEXT REFERENCES incidents(id),
+      type TEXT,
+      started_at TEXT,
+      completed_at TEXT,
+      status TEXT DEFAULT 'planned',
+      contractor TEXT,
+      cost_inr REAL,
+      outcome_json TEXT,
+      notes TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_materials_category ON materials(category);
+    CREATE INDEX IF NOT EXISTS idx_facilities_country ON facilities(country);
+    CREATE INDEX IF NOT EXISTS idx_sensors_status ON sensors(status);
+    CREATE INDEX IF NOT EXISTS idx_interventions_status ON interventions(status);
+    -- End V2.0 extensions --------------------------------------------------------
   `);
 }
 

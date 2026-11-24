@@ -4,16 +4,24 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X, Sparkles, Compass } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Sparkles, Compass, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 const NAV_LINKS = [
   { label: 'Overview', href: '/' },
-  { label: 'Technology', href: '/technology' },
+  { label: 'Challenges', href: '/challenges' },
+  { label: 'Platform', href: '/platform' },
   { label: 'Research', href: '/research' },
-  { label: 'Solutions', href: '/solutions' },
   { label: 'Impact', href: '/impact' },
+  { label: 'Partnerships', href: '/partnerships' },
   { label: 'Contact', href: '/contact' },
+];
+
+const PLATFORM_LINKS = [
+  { label: 'Environmental Observatory', href: '/intelligence', desc: '9 intelligence domains' },
+  { label: 'Research Platform', href: '/research-platform', desc: 'AI experiments & datasets' },
+  { label: 'Engineering & Ops', href: '/operations', desc: 'Field & remediation ops' },
+  { label: 'Intelligence App', href: '/app', desc: 'Bengaluru GeoIntel (legacy)' },
 ];
 
 export function CleaningoEmblem({ size = 32 }: { size?: number }) {
@@ -54,6 +62,7 @@ export function CleaningoEmblem({ size = 32 }: { size?: number }) {
 export default function PublicNav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [platformOpen, setPlatformOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -114,14 +123,39 @@ export default function PublicNav() {
             >
               Sign In
             </Link>
-            <Link href="/app">
+            {/* Platform dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPlatformOpen(!platformOpen)}
+                className="flex items-center gap-1.5 text-xs font-semibold text-[#17251F]/80 hover:text-[#123B2E] px-3 py-2 rounded-lg transition-colors border border-[rgba(18,59,46,0.12)] hover:border-[rgba(18,59,46,0.25)] bg-white/60"
+              >
+                Platform <ChevronDown className={`w-3.5 h-3.5 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {platformOpen && (
+                <div className="absolute right-0 top-full mt-2 w-64 bg-white border border-[rgba(18,59,46,0.1)] rounded-xl shadow-lg p-2 z-50 animate-in fade-in-50 slide-in-from-top-2 duration-150">
+                  {PLATFORM_LINKS.map((pl) => (
+                    <Link
+                      key={pl.href}
+                      href={pl.href}
+                      onClick={() => setPlatformOpen(false)}
+                      className="flex flex-col px-3 py-2.5 rounded-lg hover:bg-[#F7F7F0] transition-colors"
+                    >
+                      <span className="text-xs font-semibold text-[#123B2E]">{pl.label}</span>
+                      <span className="text-[11px] text-[rgba(23,37,31,0.5)] font-mono">{pl.desc}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Link href="/intelligence">
               <Button
                 variant="primary"
                 size="sm"
                 rightIcon={<ArrowUpRight className="w-3.5 h-3.5 text-[#B6D957]" />}
                 className="shadow-sm"
               >
-                Launch Intelligence App
+                Open Platform
               </Button>
             </Link>
           </div>

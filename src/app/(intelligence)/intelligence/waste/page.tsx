@@ -6,11 +6,8 @@ import {
   Map,
   Waves,
   BarChart3,
-  ArrowRight,
-  AlertTriangle,
   Layers,
   MapPin,
-  Filter,
   ExternalLink,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';

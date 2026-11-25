@@ -1,0 +1,123 @@
+[0] (Normal) CLEANINGOAI
+[1] (Title) Deep Learning-Based Urban Waste Detection and Severity Assessment with Drainage-Network-Aware Geospatial Environmental Risk Prioritisation: A Case Study of Bengaluru
+[2] (Normal) Research Proposal | Literature Review Matrix | Methodology | DEL & AAT Execution Plan
+Study area: Bengaluru, India  |  Planning horizon: 14 days  |  Status: Proposal – experiments pending
+[4] (Heading 1) Executive summary
+[5] (Normal) CleaningoAI is proposed as a field-data-driven research prototype that combines (1) deep-learning-based waste detection/localisation, (2) image-derived waste severity assessment, and (3) drainage-network-aware geospatial environmental-priority analysis. The study uses the team's existing Bengaluru photographs and coordinates, after data audit and verification. The primary research question is whether network connectivity and downstream drainage context add useful prioritisation information beyond image severity and straight-line distance.
+[6] (Normal) The two-week target is an academic prototype, defensible preliminary experiments, and DEL/AAT documentation—not a guarantee of journal acceptance or a fully validated city-scale environmental risk model. The study will not claim measured pollution, contamination, flood causation, or actual waste transport unless those outcomes are independently measured.
+[7] (Heading 1) 1. Final working title
+[8] (Normal) Deep Learning-Based Urban Waste Detection and Severity Assessment with Drainage-Network-Aware Geospatial Environmental Risk Prioritisation: A Case Study of Bengaluru
+[9] (Heading 1) 2. Background and rationale
+[10] (Normal) Urban waste monitoring increasingly uses computer vision, remote sensing, geospatial analytics and street-level imagery. Existing work already demonstrates deep-learning detection, geotagged litter mapping and GIS-based illegal-dumping risk analysis. Therefore, a generic YOLO garbage detector or a map of detected litter is not a sufficient novelty claim.
+[11] (Normal) The proposed narrower contribution is a comparative study of visual waste severity and drainage-network connectivity. Euclidean distance to a drain or water body is not equivalent to a verified downstream pathway. A site may be close to a drain but disconnected, while another site farther away may be connected through the drainage graph. The project will test whether a network-aware feature improves the ranking of sites for inspection.
+[12] (Heading 1) 3. Problem statement
+[13] (Normal) Current image-based waste monitoring can identify visible waste but may not distinguish accumulation severity or represent the hydrological pathway linking a dumping location to drains and downstream water bodies. Conventional GIS proximity measures may over-simplify connectivity. CleaningoAI will investigate an integrated framework that links image-derived waste evidence with verified drainage-network context to prioritise locations for inspection.
+[14] (Heading 1) 4. Aim, objectives and research questions
+[15] (Normal) Aim: To develop and evaluate a deep-learning and geospatial framework for detecting urban waste, estimating visible accumulation severity, and prioritising mapped Bengaluru locations using drainage-network connectivity.
+[16] (List Bullet) O1. Audit and structure the existing georeferenced photograph dataset.
+[17] (List Bullet) O2. Evaluate a pretrained deep-learning detector/segmenter on the collected images.
+[18] (List Bullet) O3. Define and test a reproducible image-based severity annotation protocol.
+[19] (List Bullet) O4. Build a drainage graph and derive connectivity/downstream exposure features where reliable network data are available.
+[20] (List Bullet) O5. Compare distance-only, image-only, proximity-integrated and network-integrated prioritisation baselines.
+[21] (List Bullet) O6. Produce a reproducible prototype, evaluation report and DEL/AAT documentation.
+[22] (List Bullet) RQ1: How well does a pretrained model detect/localise waste in the team's field photographs?
+[23] (List Bullet) RQ2: Can visible waste severity be annotated consistently by independent human raters and, where feasible, estimated from image outputs?
+[24] (List Bullet) RQ3: Does drainage-network connectivity add information beyond straight-line distance to drains/water bodies?
+[25] (List Bullet) RQ4: Does the integrated ranking identify independently verified priority sites more effectively than baseline rankings?
+[26] (Heading 1) 5. Research hypotheses
+[27] (Heading 1) 6. Literature review and research gap
+[28] (Normal) The literature matrix below is a targeted starting review, not yet a PRISMA-style systematic review. Each paper must be downloaded and checked in full before final manuscript claims. The most important finding is that deep-learning waste detection, geotagged litter hotspot mapping, and GIS dumping-risk mapping already exist. In particular, the 2026 Khulna GeoAI study uses proximity to drains among its predictors. Thus, CleaningoAI must not claim novelty merely from adding a drain-distance variable.
+[29] (Heading 1) 7. Proposed novelty and contribution
+[30] (Normal) Proposed contribution (to be validated): a workflow that links deep-learning-derived waste evidence and human-verified severity to a drainage-network graph, then tests whether network connectivity/downstream pathway features improve site-priority rankings compared with Euclidean proximity baselines.
+[31] (List Bullet) C1 – Local georeferenced evidence: curated and documented Bengaluru field photographs with site-level coordinates and metadata.
+[32] (List Bullet) C2 – Visual evidence: evaluated pretrained detection/segmentation model and a transparent severity annotation protocol.
+[33] (List Bullet) C3 – Network-aware context: graph-based drainage connection and downstream water-body linkage, subject to data quality and field verification.
+[34] (List Bullet) C4 – Comparative evaluation: controlled ablation comparing image severity, Euclidean proximity and network-aware features using spatially separated validation.
+[35] (Normal) Novelty caveat: this is a proposed gap, not a proven first. Before submission, perform a targeted search for prior work combining street-level image-derived severity with explicit storm-drain graph connectivity and downstream receiving-water linkage. If close prior work exists, narrow the contribution further (e.g., local field validation, annotation protocol, uncertainty-aware ranking, or a carefully defined drainage graph metric).
+[36] (Heading 1) 8. Scope, assumptions and exclusions
+[37] (List Bullet) Study area: only the team's original mapped Bengaluru locations and any additional sites that can be verified within the two-week period.
+[38] (List Bullet) Primary data: photographs and coordinates confirmed by the team; count unique sites only after deduplication.
+[39] (List Bullet) Environmental risk means a screening/inspection priority score, not measured contamination or health risk.
+[40] (List Bullet) Drainage connectivity is considered confirmed only where authoritative or field-verified network links support it; otherwise mark unknown.
+[41] (List Bullet) Do not infer downstream flow from straight-line distance alone.
+[42] (List Bullet) Do not train a deep model from scratch on a small dataset; start with pretrained weights and transfer learning only if labels and sample size justify it.
+[43] (List Bullet) Do not report journal-ready performance from training data or a random image split that leaks images from the same site into train and test.
+[44] (Heading 1) 9. Data design and preparation
+[45] (Normal) Create one master table with one row per unique observation/site and a separate image table if a site has multiple photographs. Preserve raw files unchanged and record provenance.
+[46] (Heading 1) 10. Severity annotation protocol
+[47] (List Bullet) Low: sparse, isolated visible litter or small accumulation with no apparent obstruction.
+[48] (List Bullet) Medium: a concentrated accumulation clearly larger than scattered litter, but not visibly extensive.
+[49] (List Bullet) High: extensive accumulation or visible obstruction/encroachment on a drain/channel or public passage.
+[50] (List Bullet) Not assessable: image angle, occlusion, resolution or distance prevents reliable judgement.
+[51] (Normal) This is a visual ordinal scale, not a measured mass/volume scale. Two raters should independently label a subset and resolve disagreements using a documented adjudication process. Do not use severity labels as ground truth if they were generated by the model being evaluated.
+[52] (Heading 1) 11. Deep-learning methodology
+[53] (Normal) Stage A – establish the task. Start with image-level waste/no-waste classification or object detection depending on annotation effort. If the research question requires localisation and visible area, use bounding boxes or segmentation masks. Detection and segmentation are not interchangeable.
+[54] (List Bullet) Baseline: a current pretrained YOLO detection model, with model/version and checkpoint documented. Compare a second baseline only if time and labels permit.
+[55] (List Bullet) Annotation: CVAT or Roboflow; define a small number of visually separable classes (e.g., mixed waste, plastic-dominant waste, construction debris, waste container/overflow) only where examples support them.
+[56] (List Bullet) Training: transfer learning/fine-tuning only with a defensible train/validation/test split. Freeze or unfreeze layers according to sample size and overfitting.
+[57] (List Bullet) Split by site/location, not by image, so multiple images from one dumping site cannot leak across sets.
+[58] (List Bullet) Metrics: precision, recall, F1, mAP@0.5 and mAP@0.5:0.95 for detection; IoU/Dice for segmentation; confusion matrix for classification.
+[59] (List Bullet) Report per-class metrics, confidence threshold, number of test sites/images, and confidence intervals where possible.
+[60] (List Bullet) Severity: initially use human-annotated ordinal labels; evaluate agreement. Only claim automated severity prediction if a separately trained/validated model predicts those labels reliably.
+[61] (Heading 1) 12. Drainage-network geospatial methodology
+[62] (List Bullet) Acquire drainage line/asset data from an authoritative municipal/open-data source where available; OpenStreetMap can be a provisional source, not ground truth.
+[63] (List Bullet) Acquire water-body polygons/lines and a suitable DEM. Record source, date, spatial resolution, coordinate reference system and known limitations.
+[64] (List Bullet) Clean and project layers into an appropriate local projected CRS for distance/length calculations.
+[65] (List Bullet) Build a directed graph of drainage segments using verified connectivity and flow direction. Do not assume every intersecting line is hydraulically connected.
+[66] (List Bullet) Snap site points to the nearest plausible drain only within a justified tolerance; manually inspect ambiguous snaps.
+[67] (List Bullet) Derive features: nearest-drain Euclidean distance; connected/not connected/unknown; graph/network distance to verified downstream outlet; downstream water-body linkage; and optional upstream contributing area/DEM-derived flow accumulation if terrain resolution supports it.
+[68] (List Bullet) Treat 30 m DEM-derived flow paths cautiously in dense urban areas; small storm drains may not be resolved. Prefer municipal drainage geometry and field verification.
+[69] (List Bullet) Keep missing or uncertain network links as unknown, not as disconnected.
+[70] (Heading 1) 13. Integrated priority scoring and experiments
+[71] (Normal) Use a transparent, interpretable baseline first. Normalise components to [0,1] and document their definitions. One candidate score is P_i = w_s S_i + w_c C_i + w_e E_i, where S is image-derived severity, C is verified drainage connectivity/downstream exposure, and E is environmental sensitivity. Weights must be pre-specified or tuned only on training/validation data; test data must remain untouched.
+[72] (Normal) Ground truth for priority must be independently created: for example, expert/field-assessed inspection priority using a written rubric, with reviewers blinded to model scores. If independent priority labels cannot be collected, restrict claims to exploratory ranking and descriptive analysis; do not report predictive AUC/F1 for a target that does not exist.
+[73] (Heading 1) 14. Evaluation and statistical safeguards
+[74] (List Bullet) Deep learning: precision, recall, F1, mAP and confusion matrix; use location-separated test data.
+[75] (List Bullet) Severity: weighted Cohen's kappa for two raters or Krippendorff's alpha for more raters/missing labels.
+[76] (List Bullet) Priority ranking: Precision@K, Recall@K, NDCG@K or top-K overlap against independent field/expert labels.
+[77] (List Bullet) Comparisons: same test locations across E1–E4; report bootstrap confidence intervals where sample size allows.
+[78] (List Bullet) Spatial validation: group by site or spatial block; avoid random pixel/image splits that inflate performance.
+[79] (List Bullet) Ablation: remove severity, remove connectivity, and remove environmental context to show each component's contribution.
+[80] (List Bullet) Error analysis: false positives (e.g., shadows, leaves, construction material) and false negatives (occlusion, small litter, night/blur).
+[81] (List Bullet) Limitations: small/non-random sample, incomplete drainage maps, temporal mismatch, image viewpoint, domain shift and lack of direct water-quality measurements.
+[82] (Heading 1) 15. System architecture and prototype
+[83] (Heading 1) 16. DEL and AAT deliverables
+[84] (Heading 1) 17. Fourteen-day execution schedule
+[85] (Heading 1) 18. Publication strategy and ethics
+[86] (Normal) The two-week outcome should be a defensible prototype and a preliminary research manuscript outline. A journal paper should be submitted only after the dataset, annotation quality, spatial validation, independent priority labels and novelty search are adequate. Do not promise publication within two weeks.
+[87] (List Bullet) Verify every reference and DOI from the publisher record before submission.
+[88] (List Bullet) Check target journal scope, current indexing, article-processing charges and publication ethics directly on official journal sites.
+[89] (List Bullet) Do not submit to predatory or guaranteed-acceptance outlets.
+[90] (List Bullet) Disclose dataset sources, permissions, annotation process, model checkpoint/licence and any generative-AI assistance according to venue rules.
+[91] (List Bullet) Protect identifiable people/vehicle number plates in field photographs where required; avoid publishing sensitive exact coordinates if they create privacy or safety risks.
+[92] (List Bullet) Report negative results and uncertainty; never fabricate accuracy, number of locations, field validation or drainage connections.
+[93] (Heading 1) 19. Immediate decisions for the faculty guide
+[94] (List Bullet) Approve the working title and drainage-connectivity research question.
+[95] (List Bullet) Confirm DEL/AAT format, rubric, team roles and exact submission deadline.
+[96] (List Bullet) Confirm whether the faculty expects a working software prototype, a research proposal, or both.
+[97] (List Bullet) Approve the study-area boundary and fieldwork permissions.
+[98] (List Bullet) Identify an authoritative drainage dataset or approve the use of provisional open data with explicit limitations.
+[99] (List Bullet) Agree on independent severity and priority annotation by at least two reviewers.
+[100] (Heading 1) 20. Starter reference list
+[101] (List Number) Fraternali et al. (2024). Solid waste detection, monitoring and mapping in remote sensing images: A survey. Waste Management 189, 88–102. DOI/record: 10.1016/j.wasman.2024.08.003.
+[102] (List Number) Shahab & Anjum (2022). Solid Waste Management Scenario in India and Illegal Dump Detection Using Deep Learning. Sustainability 14(23), 15896. DOI/record: 10.3390/su142315896.
+[103] (List Number) Das & Morshed (2026). A GeoAI framework for detecting risk zones from illegal dumping sites in Khulna, Bangladesh. PLOS ONE 21(3), e0345178. DOI/record: 10.1371/journal.pone.0345178.
+[104] (List Number) Valenzuela-Levi et al. (2026 online article). Mapping waste mismanagement: Detecting litter hotspots with geospatial AI and pedestrian imagery. Resources, Conservation & Recycling, article 108772. DOI/record: 10.1016/j.resconrec.2025.108772.
+[105] (List Number) Kashyap, Chanakya & Ramachandra (2021). Pattern, characterization and quantification of unauthorized waste dump sites: A case study of Bangalore. Journal of Solid Waste Technology and Management 47(2), 362–370. DOI/record: See IISc research page.
+[106] (List Number) Sultana & Inayathulla (2025). Assessment of Current Waste Management Practices, Illegal Dump Site Occurrence, and Solid Waste Composition in East Zone of BBMP, Bangalore: A Geospatial Perspective. International Journal of Environmental Sciences 11(8), 1000–1010. DOI/record: 10.64252/r5b6bg28.
+[107] (List Number) Gibellini et al. (2025). A Deep Learning Pipeline for Solid Waste Detection in Remote Sensing Images. Waste Management Bulletin 3(4), 100246. DOI/record: 10.1016/j.wmb.2025.100246.
+[108] (List Number) Litter detection in Real-World Environments using YOLO models (2025). Litter detection in Real-World Environments using YOLO models. IEEE CIETES 2025. DOI/record: 10.1109/CIETES63869.2025.10995152.
+[109] (List Number) Urban Waste Detection and Segmentation using Deep Learning and Computer Vision Techniques (2026). Urban Waste Detection and Segmentation using Deep Learning and Computer Vision Techniques. IEEE ICSEDIS 2026. DOI/record: 10.1109/ICSEDIS68157.2026.11518479.
+[110] (List Number) StreetView-Waste (WACV 2026). StreetView-Waste: A Multi-Task Dataset for Urban Waste Management. IEEE/CVF WACV 2026. DOI/record: 10.1109/WACV61042.2026.00295.
+[111] (Normal) Reference links:
+[112] (List Bullet) 2024 survey: https://doi.org/10.1016/j.wasman.2024.08.003
+[113] (List Bullet) 2022 mp-CNN paper: https://doi.org/10.3390/su142315896
+[114] (List Bullet) 2026 Khulna GeoAI: https://doi.org/10.1371/journal.pone.0345178
+[115] (List Bullet) 2026 geospatial pedestrian imagery: https://doi.org/10.1016/j.resconrec.2025.108772
+[116] (List Bullet) Bengaluru unauthorised dump sites: https://wgbis.ces.iisc.ac.in/energy/paper/PATTERN%2C%20CHARACTERIZATION%20AND%20QUANTIFICATION%20OF%20UNAUTHORIZED%20WASTE%20DUMP%20SITES/materials.html
+[117] (List Bullet) BBMP East Zone 2025 study: https://doi.org/10.64252/r5b6bg28
+[118] (List Bullet) 2025 remote sensing DL pipeline: https://doi.org/10.1016/j.wmb.2025.100246
+[119] (List Bullet) 2025 YOLO litter detection: https://doi.org/10.1109/CIETES63869.2025.10995152
+[120] (List Bullet) 2026 YOLOv8 + SAM2: https://doi.org/10.1109/ICSEDIS68157.2026.11518479
+[121] (List Bullet) StreetView-Waste WACV 2026: https://doi.org/10.1109/WACV61042.2026.00295
+[122] (Normal) Prepared as a working research proposal. Literature coverage is preliminary and must be expanded and checked against full texts before journal submission.

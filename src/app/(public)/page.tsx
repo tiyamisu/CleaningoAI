@@ -2,33 +2,19 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   MapPin,
   Eye,
   Waves,
-  ShieldAlert,
   ArrowRight,
   CheckCircle2,
-  Layers,
-  Sparkles,
-  BarChart3,
-  Flame,
   AlertTriangle,
   Compass,
-  ChevronRight,
-  Database,
   Cpu,
   FileCheck2,
-  Workflow,
-  Building2,
-  GraduationCap,
-  Users2,
-  TrendingUp,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 
 /* ─── Verified Observation Demo Points for Hero Preview ───────────────────── */

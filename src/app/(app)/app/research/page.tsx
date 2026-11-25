@@ -1,21 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import {
-  FlaskConical,
-  Database,
-  AlertTriangle,
-  Clock,
-  CheckCircle2,
-  FileText,
-  Layers,
-  Sparkles,
-  BookOpen,
-} from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 
 interface ResearchData {
   dataset?: {
@@ -65,16 +52,14 @@ const RESEARCH_QUESTIONS = [
 
 export default function ResearchWorkspacePage() {
   const [data, setData] = useState<ResearchData>({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/research')
       .then((r) => r.json())
       .then((d) => {
         setData(d);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const ds = data.dataset;

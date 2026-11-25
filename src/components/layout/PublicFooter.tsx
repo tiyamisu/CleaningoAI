@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { CleaningoEmblem } from './PublicNav';
-import { ShieldCheck, MapPin, ExternalLink, ArrowRight } from 'lucide-react';
+import { ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 
 const FOOTER_SECTIONS = [
   {

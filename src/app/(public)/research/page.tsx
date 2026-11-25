@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import { FlaskConical, AlertTriangle, Clock, ArrowRight, ShieldCheck, CheckSquare, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 
 const EXPERIMENTS = [

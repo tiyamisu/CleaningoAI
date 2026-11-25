@@ -4,19 +4,14 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   Upload,
-  Eye,
   AlertTriangle,
-  CheckCircle2,
   XCircle,
   Loader2,
   X,
   RotateCcw,
   Sparkles,
-  Download,
   FileText,
   Scan,
-  Layers,
-  Activity,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -81,7 +76,6 @@ export default function VisionAILabPage() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [history, setHistory] = useState<AnalysisResult[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (f: File) => {
@@ -141,7 +135,6 @@ export default function VisionAILabPage() {
         return;
       }
       setResult(data);
-      setHistory((prev) => [data, ...prev.slice(0, 9)]);
     } catch {
       setError('Network communication error. Please check backend API status.');
     } finally {

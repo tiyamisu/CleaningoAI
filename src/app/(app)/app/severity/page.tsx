@@ -2,13 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import {
-  BarChart3,
-  Info,
-  Filter,
-  CheckCircle2,
-  Clock,
-  AlertTriangle,
-  Flame,
   Save,
   Check,
 } from 'lucide-react';
@@ -77,7 +70,6 @@ const RUBRIC_TIERS = [
 
 export default function SeverityEnginePage() {
   const [observations, setObservations] = useState<Observation[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedObs, setSelectedObs] = useState<Observation | null>(null);
   const [annotatedRating, setAnnotatedRating] = useState<string>('');
   const [annotatedNotes, setAnnotatedNotes] = useState<string>('');
@@ -93,9 +85,8 @@ export default function SeverityEnginePage() {
         const obs = data.observations || [];
         setObservations(obs);
         if (obs.length > 0) setSelectedObs(obs[0]);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const distribution = [

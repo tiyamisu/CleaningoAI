@@ -1,15 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState, useCallback } from 'react';
 import {
   UserCheck,
-  ChevronRight,
-  Shield,
-  CheckCircle2,
-  AlertTriangle,
   Loader2,
-  Users,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -38,9 +32,8 @@ export default function OpsAssignPage() {
   const [loading, setLoading] = useState(true);
   const [assigningId, setAssigningId] = useState<string | null>(null);
   const [selections, setSelections] = useState<Record<string, string>>({});
-  const [successId, setSuccessId] = useState<string | null>(null);
 
-  async function loadData() {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch('/api/incidents?limit=100');
@@ -49,11 +42,12 @@ export default function OpsAssignPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
-  }, []);
+  }, [loadData]);
 
   async function handleAssign(id: string) {
     const inspector = selections[id];
@@ -70,9 +64,7 @@ export default function OpsAssignPage() {
           notes: `Assigned to ward inspector ${inspector} for verification.`,
         }),
       });
-      setSuccessId(id);
       await loadData();
-      setTimeout(() => setSuccessId(null), 3000);
     } finally {
       setAssigningId(null);
     }

@@ -16,7 +16,6 @@ import {
   AlertTriangle,
   ScrollText,
   ShieldCheck,
-  Users,
   ChevronLeft,
   ChevronRight,
   Menu,
@@ -93,7 +92,13 @@ function NavContent({ collapsed }: { collapsed: boolean }) {
               </p>
             )}
             <div className="space-y-0.5">
-              {section.items.map(({ href, label, icon: Icon, exact, badge }: any) => {
+              {section.items.map(({ href, label, icon: Icon, exact, badge }: {
+                href: string;
+                label: string;
+                icon: React.ComponentType<{ className?: string }>;
+                exact?: boolean;
+                badge?: string;
+              }) => {
                 const isActive = exact ? pathname === href : pathname.startsWith(href);
                 return (
                   <Link

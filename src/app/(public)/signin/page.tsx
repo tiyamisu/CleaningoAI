@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { LogIn, Eye, EyeOff, ShieldCheck, ArrowRight, UserCheck } from 'lucide-react';
+import { Eye, EyeOff, ShieldCheck, ArrowRight } from 'lucide-react';
 import { CleaningoEmblem } from '@/components/layout/PublicNav';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';

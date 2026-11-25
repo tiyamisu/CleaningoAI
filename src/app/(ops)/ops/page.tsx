@@ -5,17 +5,13 @@ import Link from 'next/link';
 import {
   List,
   UserCheck,
-  TrendingUp,
   AlertTriangle,
   CheckCircle2,
-  Clock,
   ArrowRight,
   Shield,
-  FileSearch,
   BookOpen,
-  Settings,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { StatCard } from '@/components/ui/StatCard';
@@ -29,16 +25,14 @@ interface AnalyticsData {
 
 export default function OpsOverviewPage() {
   const [data, setData] = useState<AnalyticsData>({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/analytics')
       .then((r) => r.json())
       .then((d) => {
         setData(d);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const inc = data.incidents;

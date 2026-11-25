@@ -3,20 +3,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
-  List,
-  ChevronRight,
-  AlertCircle,
-  Clock,
-  UserCheck,
   CheckCircle2,
-  XCircle,
-  Eye,
   ArrowRight,
   Loader2,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 
 interface Incident {
   id: string;
@@ -64,6 +56,7 @@ export default function OpsQueuePage() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
   }, []);
 

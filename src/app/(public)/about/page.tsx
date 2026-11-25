@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { MapPin, Target, Microscope, Globe2, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
 
 const ZONES = [
   { id: 'ZONE_02-KK', name: 'Kammasandra / Konanakunte', sites: 20 },

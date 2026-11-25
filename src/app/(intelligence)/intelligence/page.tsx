@@ -15,9 +15,6 @@ import {
   Target,
   ArrowRight,
   MapPin,
-  AlertTriangle,
-  TrendingUp,
-  Database,
   CheckCircle2,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';

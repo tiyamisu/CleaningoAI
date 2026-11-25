@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import { Cpu, Map, Network, BarChart3, AlertTriangle, ArrowRight, CheckCircle2, ShieldAlert } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 
 const PIPELINE = [

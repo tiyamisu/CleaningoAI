@@ -4,24 +4,17 @@ import { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
-  PieChart,
-  Pie,
   Cell,
   ResponsiveContainer,
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   CartesianGrid,
 } from 'recharts';
 import {
-  TrendingUp,
   Database,
   AlertTriangle,
   Flame,
-  CheckCircle2,
-  Layers,
-  MapPin,
   Activity,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
@@ -70,16 +63,14 @@ const SHORT_ZONES: Record<string, string> = {
 
 export default function AnalyticsPage() {
   const [data, setData] = useState<AnalyticsData>({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/analytics')
       .then((r) => r.json())
       .then((d) => {
         setData(d);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const obs = data.observations;

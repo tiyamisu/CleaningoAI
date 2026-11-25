@@ -5,14 +5,10 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import {
   Search,
-  Filter,
   Download,
   RefreshCw,
   MapPin,
   Flame,
-  AlertTriangle,
-  ChevronRight,
-  Layers,
   X,
   FileText,
   SlidersHorizontal,
@@ -89,6 +85,7 @@ export default function GeoIntelMapPage() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
   }, [loadData]);
 

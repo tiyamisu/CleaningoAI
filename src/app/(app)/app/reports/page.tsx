@@ -3,19 +3,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  FileText,
   MapPin,
-  User,
   CheckCircle2,
   Loader2,
   ChevronRight,
   ChevronLeft,
   Navigation,
-  AlertTriangle,
-  ArrowRight,
-  Sparkles,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 

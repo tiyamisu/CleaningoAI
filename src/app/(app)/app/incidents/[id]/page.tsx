@@ -1,20 +1,14 @@
 'use client';
 
-import { useEffect, useState, use } from 'react';
+import { useEffect, useState, useCallback, use } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import {
   ChevronLeft,
   Clock,
-  User,
   CheckCircle2,
   Loader2,
   MapPin,
-  FileText,
-  Shield,
   ArrowRight,
-  MessageSquare,
-  AlertTriangle,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -66,7 +60,6 @@ export default function IncidentDetailPage({
 }) {
   const unwrappedParams = use(params);
   const id = unwrappedParams.id;
-  const router = useRouter();
 
   const [incident, setIncident] = useState<Incident | null>(null);
   const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
@@ -77,7 +70,7 @@ export default function IncidentDetailPage({
   const [notes, setNotes] = useState('');
   const [feedback, setFeedback] = useState('');
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`/api/incidents/${id}`);
@@ -90,10 +83,12 @@ export default function IncidentDetailPage({
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleUpdate = async () => {

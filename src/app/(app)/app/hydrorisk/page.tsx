@@ -4,16 +4,9 @@ import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import {
   AlertTriangle,
-  ArrowUpDown,
   Download,
-  Filter,
   Search,
-  Droplet,
   Waves,
-  MapPin,
-  ExternalLink,
-  ChevronRight,
-  ShieldAlert,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';

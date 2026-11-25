@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X, Sparkles, Compass, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 const NAV_LINKS = [

@@ -1,16 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
-  BookOpen,
-  ChevronRight,
   RefreshCw,
-  Clock,
-  Shield,
-  Filter,
-  CheckCircle2,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { formatDateTime } from '@/lib/utils';
@@ -38,7 +32,7 @@ export default function OpsAuditPage() {
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('all');
 
-  async function loadData(p: number) {
+  const loadData = useCallback(async (p: number) => {
     setLoading(true);
     try {
       const params = new URLSearchParams({ page: String(p), limit: '25' });
@@ -49,11 +43,12 @@ export default function OpsAuditPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [filterType]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData(page);
-  }, [page, filterType]);
+  }, [page, loadData]);
 
   const EVENT_TYPES = ['all', 'created', 'updated', 'seed'];
 

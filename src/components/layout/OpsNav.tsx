@@ -13,13 +13,10 @@ import {
   Settings,
   ChevronLeft,
   Shield,
-  ExternalLink,
   Menu,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { CleaningoEmblem } from '@/components/layout/PublicNav';
-import { Badge } from '@/components/ui/Badge';
 
 const NAV_ITEMS = [
   { href: '/ops', label: 'Operations Desk', icon: LayoutDashboard, exact: true },

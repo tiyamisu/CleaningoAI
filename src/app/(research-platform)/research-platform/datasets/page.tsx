@@ -3,15 +3,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
-  Database,
-  MapPin,
-  Filter,
-  Download,
   ExternalLink,
   CheckCircle2,
   AlertTriangle,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
 interface Observation {
@@ -92,7 +87,7 @@ export default function DatasetsPage() {
           { label: 'High Risk', value: riskCounts.HIGH, color: 'text-red-700' },
           { label: 'Medium Risk', value: riskCounts.MEDIUM, color: 'text-amber-700' },
           { label: 'Low Risk', value: riskCounts.LOW, color: 'text-green-700' },
-        ].map((s: any) => (
+        ].map((s: { label: string; value: string | number; verified?: boolean; color?: string }) => (
           <div key={s.label} className="editorial-card p-4">
             <div className={`text-2xl font-heading font-extrabold ${s.color ?? 'text-[#123B2E]'}`}>{s.value}</div>
             <div className="text-xs font-mono text-[rgba(23,37,31,0.6)] mt-1">{s.label}</div>

@@ -1,18 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import {
-  FileSearch,
-  ChevronRight,
   CheckCircle2,
   Clock,
-  Shield,
   Loader2,
-  MapPin,
-  Camera,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
@@ -32,7 +26,6 @@ export default function OpsInspectPage() {
   const [loading, setLoading] = useState(true);
   const [markingId, setMarkingId] = useState<string | null>(null);
   const [notes, setNotes] = useState<Record<string, string>>({});
-  const [successId, setSuccessId] = useState<string | null>(null);
 
   async function loadData() {
     setLoading(true);
@@ -46,6 +39,7 @@ export default function OpsInspectPage() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
   }, []);
 
@@ -65,9 +59,7 @@ export default function OpsInspectPage() {
           actor: 'inspector@cleaningo.ai',
         }),
       });
-      setSuccessId(id);
       await loadData();
-      setTimeout(() => setSuccessId(null), 3000);
     } finally {
       setMarkingId(null);
     }

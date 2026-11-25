@@ -2,15 +2,7 @@
 
 import Link from 'next/link';
 import {
-  Settings,
-  Shield,
-  Database,
-  Server,
-  Code,
-  Key,
   ExternalLink,
-  CheckCircle2,
-  RefreshCw,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';

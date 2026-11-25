@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState, useCallback } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
-import { ArrowLeft, ChevronRight, Clock, UserCheck, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Clock, UserCheck, CheckCircle2 } from 'lucide-react';
 
 type TimelineEntry = { id: number; from_status: string; to_status: string; changed_by: string; note: string; changed_at: string };
 type Incident = {
@@ -27,23 +27,23 @@ const INSPECTORS = [
 
 export default function OpsQueueDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const [incident, setIncident] = useState<Incident | null>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [assignTo, setAssignTo] = useState('');
   const [note, setNote] = useState('');
 
-  async function load() {
+  const load = useCallback(async () => {
     const res = await fetch(`/api/incidents/${params.id}`);
     if (!res.ok) return;
     const d = await res.json();
     // API returns { incident, timeline } — flatten into one object for convenience
     setIncident(d.incident ? { ...d.incident, timeline: d.timeline ?? [] } : { ...d, timeline: d.timeline ?? [] });
     setLoading(false);
-  }
+  }, [params.id]);
 
-  useEffect(() => { load(); }, [params.id]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { load(); }, [load]);
 
   async function advance() {
     if (!incident) return;
@@ -132,7 +132,7 @@ export default function OpsQueueDetailPage() {
                         <span className="text-xs text-gray-400 ml-auto">{new Date(t.changed_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
                       <div className="text-xs text-gray-500 mt-1">by {t.changed_by}</div>
-                      {t.note && <div className="text-xs text-gray-600 mt-1 italic">"{t.note}"</div>}
+                      {t.note && <div className="text-xs text-gray-600 mt-1 italic">&ldquo;{t.note}&rdquo;</div>}
                     </div>
                   </div>
                 ))}

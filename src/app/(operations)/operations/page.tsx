@@ -14,7 +14,6 @@ import {
   Droplets,
   CheckSquare,
   ArrowRight,
-  TrendingUp,
   CheckCircle2,
   Clock,
   MapPin,

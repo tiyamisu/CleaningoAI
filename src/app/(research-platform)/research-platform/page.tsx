@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import {
   Globe,
   FlaskConical,
@@ -10,9 +9,6 @@ import {
   ArrowRight,
   BookOpen,
   FileText,
-  CheckCircle2,
-  Clock,
-  AlertTriangle,
   Cpu,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle2, MessageSquare, PhoneCall } from 'lucide-react';
+import { MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Input } from '@/components/ui/Input';
@@ -108,7 +108,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-[#123B2E]">Message Received</h3>
                 <p className="text-sm text-[rgba(23,37,31,0.7)] max-w-sm mt-2">
-                  Thank you, <strong>{form.name}</strong>. A researcher will review your note regarding "{form.subject}" and reply to <strong>{form.email}</strong> shortly.
+                  Thank you, <strong>{form.name}</strong>. A researcher will review your note regarding &ldquo;{form.subject}&rdquo; and reply to <strong>{form.email}</strong> shortly.
                 </p>
                 <div className="mt-6">
                   <Button

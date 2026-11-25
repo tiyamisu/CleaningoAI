@@ -20,12 +20,9 @@ import {
   Menu,
   X,
   ExternalLink,
-  ShieldCheck,
-  Compass,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CleaningoEmblem } from '@/components/layout/PublicNav';
-import { Badge } from '@/components/ui/Badge';
 
 interface NavSection {
   title: string;
@@ -81,12 +78,20 @@ const NAV_SECTIONS: NavSection[] = [
   },
 ];
 
-export function AppNav() {
-  const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+interface AppNavContentProps {
+  collapsed: boolean;
+  pathname: string;
+  onCloseMobile: () => void;
+  onToggleCollapse: () => void;
+}
 
-  const NavContent = () => (
+function AppNavContent({
+  collapsed,
+  pathname,
+  onCloseMobile,
+  onToggleCollapse,
+}: AppNavContentProps) {
+  return (
     <div className="flex flex-col h-full bg-[#123B2E] text-white select-none border-r border-[#0B2922]">
       {/* Brand Header */}
       <div className={cn(
@@ -120,7 +125,7 @@ export function AppNav() {
                   <Link
                     key={href}
                     href={href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={onCloseMobile}
                     className={cn(
                       'flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all group relative',
                       isActive
@@ -167,7 +172,7 @@ export function AppNav() {
         {/* Collapse Trigger (Desktop) */}
         <button
           type="button"
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={onToggleCollapse}
           className="hidden lg:flex w-full items-center justify-center gap-2 px-3 py-1.5 text-[11px] font-mono text-[#DCE8DA]/50 hover:text-white transition-colors"
         >
           {collapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <><ChevronLeft className="w-3.5 h-3.5" /><span>Collapse Sidebar</span></>}
@@ -175,6 +180,12 @@ export function AppNav() {
       </div>
     </div>
   );
+}
+
+export function AppNav() {
+  const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <>
@@ -203,7 +214,12 @@ export function AppNav() {
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <NavContent />
+        <AppNavContent
+          collapsed={collapsed}
+          pathname={pathname}
+          onCloseMobile={() => setMobileOpen(false)}
+          onToggleCollapse={() => setCollapsed(!collapsed)}
+        />
       </aside>
 
       {/* Desktop Sticky Sidebar */}
@@ -213,7 +229,12 @@ export function AppNav() {
           collapsed ? 'w-16' : 'w-60'
         )}
       >
-        <NavContent />
+        <AppNavContent
+          collapsed={collapsed}
+          pathname={pathname}
+          onCloseMobile={() => setMobileOpen(false)}
+          onToggleCollapse={() => setCollapsed(!collapsed)}
+        />
       </aside>
     </>
   );

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import getDb from '@/lib/db';
 import { seedIfEmpty } from '@/lib/seed';
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const db = getDb();
     seedIfEmpty(db);

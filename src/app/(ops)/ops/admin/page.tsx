@@ -2,13 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import {
-  Settings,
-  Database,
-  Layers,
   RefreshCw,
   CheckCircle2,
-  Shield,
-  Server,
   Loader2,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';

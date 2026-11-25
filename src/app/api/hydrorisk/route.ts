@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import getDb from '@/lib/db';
 import { seedIfEmpty } from '@/lib/seed';
 
@@ -32,7 +32,7 @@ function nearestWaterway(lat: number, lng: number) {
   return { name: best.name, distance_m: Math.round(bestDist) };
 }
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   try {
     const db = getDb();
     seedIfEmpty(db);

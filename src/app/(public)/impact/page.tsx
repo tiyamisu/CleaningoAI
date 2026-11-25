@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import { TrendingUp, MapPin, Flame, AlertTriangle, Waves, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { MapPin, Flame, AlertTriangle, Waves } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 
 const ZONE_DATA = [

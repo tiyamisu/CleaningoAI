@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { Handshake, GraduationCap, Building, Heart, Globe, ArrowRight, Mail } from 'lucide-react';
+import { GraduationCap, Building, Heart, Globe, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 

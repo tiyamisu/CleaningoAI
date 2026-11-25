@@ -1,21 +1,15 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import {
-  AlertTriangle,
-  Clock,
-  CheckCircle2,
-  User,
   ChevronRight,
   Search,
-  Filter,
   Plus,
   ArrowRight,
-  ShieldAlert,
   Loader2,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card, CardHeader, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
@@ -52,7 +46,7 @@ export default function IncidentsPage() {
   const [search, setSearch] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch('/api/incidents?limit=100');
@@ -61,11 +55,12 @@ export default function IncidentsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadData();
-  }, []);
+  }, [loadData]);
 
   const advanceStatus = async (inc: Incident) => {
     const currentIdx = STATUS_ORDER.indexOf(inc.status);

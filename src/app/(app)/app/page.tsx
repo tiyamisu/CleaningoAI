@@ -8,23 +8,15 @@ import {
   Waves,
   AlertTriangle,
   TrendingUp,
-  FlaskConical,
   FileText,
   BarChart3,
   ChevronRight,
-  Database,
-  CheckCircle2,
-  Clock,
   ArrowRight,
-  ShieldAlert,
-  Flame,
-  Layers,
-  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { StatCard } from '@/components/ui/StatCard';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Card } from '@/components/ui/Card';
 
 interface Analytics {
   observations?: {
@@ -92,16 +84,14 @@ const MODULES = [
 
 export default function AppOverview() {
   const [analytics, setAnalytics] = useState<Analytics>({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/analytics')
       .then((r) => r.json())
       .then((d) => {
         setAnalytics(d);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const totalObs = analytics.observations?.total ?? 0;
